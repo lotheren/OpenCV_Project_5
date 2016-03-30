@@ -1,0 +1,65 @@
+Assignment 5: Track pupils
+DATE DUE: April 11, 2016
+Points possible: 10 points
+CS-161: Software Project
+Instructor: Rob Bruce
+OVERVIEW
+For this assignment, you will write a program to determine the location of the left and right eye pupils.
+If pupil location is determined, it should be written to the Postgres database.
+
+SPECIFICATIONS
+You will use the pupil tracking algorithm proposed by Fabian Timm and Erhardt
+Barth in their article Accurate eye centre localisation by means of gradients.
+Tristan Hume has written and released an open-source program using this pupil tracking
+algorithm on github at https://github.com/trishume/eyeLike.
+You will download and modify Mr. Hume's software to fit into your computer vision pipeline
+
+1. Your program should accept command line input through argc and argv.
+Your program will thus use argv to pass in a non-negative integer (video ID) which represents the unique identifer of an input video.
+
+2. Your program will then query Postgres for the following metadata associated with the input video ID:
+
+Number of frames
+Width (pixels) of each frame (in pixels)
+Height (pixels) of each frame (in pixels)
+3. For each frame associated with the video ID in the image repository do the following:
+
+Query Postgres with the video ID and current frame to retrieve left and right eye bounding box data
+If left eye bounding box data exists, call the eye tracking function written by Mr. Hume with the left eye bounding box data.
+If right eye bounding box data exists, call the eye tracking function written by Mr. Hume with the right eye bounding box data.
+If the location of the left eye is found, write that data to Postgres along with the current frame number and video ID.
+If the location of the right eye is found, write that data to Postgres along with the current frame number and video ID.
+SUBMITTING YOUR PROGRAM
+1. Please submit your program as a text file to the Canvas dropbox. I only need the source code. I will build the program myself.
+
+2. Please name your program using the following naming convention:
+
+Lastname_Firstname_assignment_5.c (for C programs)
+
+Lastname_Firstname_assignment_5.cpp (for C++ programs)
+
+Lastname_Firstname_assignment_5.java (for Java programs)
+
+Lastname_Firstname_assignment_5.pl (for Perl programs)
+
+Lastname_Firstname_assignment_5.py (for Python programs)
+
+Lastname_Firstname_assignment_5.sh (for BASH programs)
+
+Lastname_Firstname_assignment_5.csh (for csh programs)
+
+For example, my name is Rob Bruce. If I write my program in the C programming language, my assignment 5 should be named: Bruce_Rob_assignment_5.c
+
+3. Please include your name as a comment at the beginning of your program like this:
+
+/* Rob Bruce */
+
+or this:
+
+// Rob Bruce
+
+4. I usually do not need a makefile to build your programs, regardless of language; however, in the unlikely event that I cannot build your project, I will send an email inquiry as appropriate.
+
+5. I expect your program to build without syntax errors.
+
+6. I expect your program to execute without run-time errors.
